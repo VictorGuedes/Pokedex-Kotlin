@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_pokemons_main_list" >
         <action
             android:id="@+id/action_pokemonsMainList_to_detailsPokemonFragment"
-            app:destination="@id/detailsPokemonFragment" />
+            app:destination="@id/detailsPokemonFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/detailsPokemonFragment"
