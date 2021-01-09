@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PokemonsMainListFragment : Fragment() {
 
-    private lateinit var binding : FragmentPokemonsMainListBinding;
+    private lateinit var binding : FragmentPokemonsMainListBinding
 
     val mainViewModel : PokemonsMainViewModel by viewModels()
     lateinit var adapterList : PokemonListAdapter
