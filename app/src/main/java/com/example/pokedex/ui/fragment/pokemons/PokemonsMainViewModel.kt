@@ -1,4 +1,4 @@
-package com.example.pokedex.ui
+package com.example.pokedex.ui.fragment.pokemons
 
 import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
@@ -9,7 +9,7 @@ import com.example.pokedex.repository.PokemonRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MainViewModel @ViewModelInject constructor(
+class PokemonsMainViewModel @ViewModelInject constructor(
     val pokemonRepository: PokemonRepository
 ) : ViewModel() {
 
