@@ -86,4 +86,10 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.2"
     androidTestImplementation "androidx.navigation:navigation-testing:2.3.2"
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
+
+    //Paging library
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha11"
+    implementation "androidx.paging:paging-rxjava3:3.0.0-alpha11"
+    testImplementation "androidx.paging:paging-common-ktx:3.0.0-alpha11"
+
 }

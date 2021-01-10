@@ -10,8 +10,10 @@ import androidx.fragment.app.viewModels
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentPokemonsMainListBinding
 import com.example.pokedex.model.Pokemon
+import com.example.pokedex.ui.adapter.PokePagedAdapter
 import com.example.pokedex.ui.adapter.PokemonListAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 @AndroidEntryPoint
 class PokemonsMainListFragment : Fragment() {
@@ -20,6 +22,8 @@ class PokemonsMainListFragment : Fragment() {
 
     val mainViewModel : PokemonsMainViewModel by viewModels()
     lateinit var adapterList : PokemonListAdapter
+    private val mDisposable = CompositeDisposable()
+    private lateinit var pagedAdapter : PokePagedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +31,7 @@ class PokemonsMainListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate<FragmentPokemonsMainListBinding>(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_pokemons_main_list,
             container,
@@ -40,10 +44,16 @@ class PokemonsMainListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapterList = PokemonListAdapter(binding.root.context)
-        binding.pokemonsRecyclerview.adapter = adapterList
+        //adapterList = PokemonListAdapter(binding.root.context)
 
-        mainViewModel.pokemonList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { list -> updateData(list) })
+        pagedAdapter = PokePagedAdapter()
+        binding.pokemonsRecyclerview.adapter = pagedAdapter
+
+        //mainViewModel.pokemonList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { list -> updateData(list) })
+
+        mDisposable.add(mainViewModel.getPokemonPaged().subscribe{
+            pagedAdapter.submitData(lifecycle, it)
+        })
     }
 
     fun updateData(listPokemon : List<Pokemon>){
