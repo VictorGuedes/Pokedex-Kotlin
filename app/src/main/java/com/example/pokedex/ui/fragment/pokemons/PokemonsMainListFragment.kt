@@ -45,11 +45,10 @@ class PokemonsMainListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //adapterList = PokemonListAdapter(binding.root.context)
+        //mainViewModel.pokemonList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { list -> updateData(list) })
 
         pagedAdapter = PokePagedAdapter()
         binding.pokemonsRecyclerview.adapter = pagedAdapter
-
-        //mainViewModel.pokemonList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { list -> updateData(list) })
 
         mDisposable.add(mainViewModel.getPokemonPaged().subscribe{
             pagedAdapter.submitData(lifecycle, it)
