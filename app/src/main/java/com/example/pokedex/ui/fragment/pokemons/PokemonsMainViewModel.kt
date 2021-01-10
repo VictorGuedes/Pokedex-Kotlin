@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.filter
+import androidx.paging.map
 import androidx.paging.rxjava3.cachedIn
 import com.example.pokedex.model.Pokemon
 import com.example.pokedex.repository.PokemonRepository
@@ -30,13 +30,13 @@ class PokemonsMainViewModel @ViewModelInject constructor(
             )
     }
 
+
     fun getPokemonPaged() : Flowable<PagingData<Pokemon>>{
         return pokemonRepository.getPokemonsPaged()
-            .map { pagingData -> pagingData.filter { true } }
+            .map { it.map { pokemon -> Pokemon(pokemon.name, pokemon.url, getId(pokemon.url))  } }
             .cachedIn(viewModelScope)
     }
 
-
-
+    fun getId(url : String) = url.split("/")[6]
 
 }

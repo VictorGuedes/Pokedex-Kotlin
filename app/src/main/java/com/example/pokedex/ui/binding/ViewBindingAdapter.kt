@@ -8,10 +8,9 @@ object ViewBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("loadImage")
-    fun loadPokemonImage(imageView: ImageView, url : String){
-        val id = url.split("/")
+    fun loadPokemonImage(imageView: ImageView, id : String){
         Glide.with(imageView.context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + id[6] + ".png")
+            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png")
             .into(imageView)
 
     }

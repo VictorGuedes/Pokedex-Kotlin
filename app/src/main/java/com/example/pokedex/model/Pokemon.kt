@@ -7,5 +7,6 @@ import java.io.Serializable
 @JsonClass(generateAdapter = true)
 data class Pokemon(
     @field:Json(name = "name") val name : String,
-    @field:Json(name = "url") val url : String
+    @field:Json(name = "url") val url : String,
+    val idPokemon : String?
 ) : Serializable

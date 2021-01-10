@@ -29,7 +29,7 @@
                     android:layout_height="250dp"
                     android:scaleType="centerInside"
                     tools:src="@mipmap/ic_launcher"
-                    app:loadImage="@{pokemonModel.url}"
+                    app:loadImage="@{pokemonModel.idPokemon}"
                     tools:ignore="MissingConstraints">
                 </ImageView>
 
