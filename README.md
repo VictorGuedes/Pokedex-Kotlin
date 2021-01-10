@@ -2,7 +2,7 @@
 
 Implemented in Kotlin with:
 
-<img src="/images/image.gif" align="right" width="32%"/>
+<!--<img src="/images/image.gif" align="right" width="32%"/>-->
 
 ## Libraries:
 - [Dependency injection with Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
